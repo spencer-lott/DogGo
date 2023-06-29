@@ -1,0 +1,89 @@
+﻿@model DogGo.Models.ViewModels.WalkerFormViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Walker Profile</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+@*            @Html.DisplayNameFor(model => model.ImageUrl)*@
+        <div>Profile Picture</div>
+        </dt>
+        <dd class="col-sm-10">
+            <img class="bg-info" src="@Model.Walker.ImageUrl" alt="avatar" style="width: 100px; height: 100px;"/>
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Walker.Id)
+        </dt>
+        <div>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Walker.Id)
+        </dd>
+        </div>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Walker.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Walker.Name)
+        </dd>
+        <dt class = "col-sm-2">
+@*            @Html.DisplayNameFor(model => model.Neighborhood.Name)
+*@        <div>Nieghborhood</div>       
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Walker.Neighborhood.Name)
+        </dd>
+
+
+    </dl>
+</div>
+
+<div>
+    <h4>Walks</h4>
+    <hr />
+    <div>
+        Total Walk hours
+    </div>
+    @foreach (var walk in Model.Walks)
+    {
+        <dl class="row">
+            <dt class="col-sm-2">
+                Date
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => walk.Date)
+            </dd>
+            <dt class="col-sm-2">
+                Owner's Name
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => walk.Owner.Name)
+            </dd>
+            <dt class="col-sm-2">
+                Duration
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => walk.Duration)
+            </dd>
+            <dt class="col-sm-2">
+                Dog's Name
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => walk.Dog.Name)
+            </dd>
+        </dl>
+    }
+</div>
+
+
+
+
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /*id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>
